@@ -15,7 +15,7 @@ def index(request):
 
 def about(request):
 	if request.session.test_cookie_worked():
-		print "TEST COOKIE WORKED!"
+		print("TEST COOKIE WORKED!")
 		request.session.delete_test_cookie()
 	return HttpResponse('Rango says here is the about page. <a href="/rango/">Home</a>')
 
@@ -66,7 +66,7 @@ def add_page(request, category_name_slug):
 				page.save()
 				return show_category(request, category_name_slug)
 		else:
-			print form.errors
+			print(form.errors)
 
 	context_dict = {'form': form, 'category': category}
 	return render(request, 'rango/add_page.html', context_dict)
@@ -90,7 +90,7 @@ def register(request):
 			profile.save()
 			registered = True
 		else:
-			print user_form.errors, profile_form.errors
+			print(user_form.errors, profile_form.errors)
 	else:
 		user_form = UserForm()
 		profile_form = UserProfileForm()
@@ -115,7 +115,7 @@ def user_login(request):
 			else:
 				return HttpResponse("Your Rango account is disabled.")
 		else:
-			print "Invalid login details: {0}, {1}".format(username, password)
+			print("Invalid login details: {0}, {1}").format(username, password)
 			return HttpResponse("Invalid login details supplied.")
 
 	else:
